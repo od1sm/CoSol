@@ -17,29 +17,26 @@ def savim(dir, name):
 
 print('Program started running!')
 dpisiz = 1000
-N = 100  # random walk steps
+N = 1000  # random walk steps
 repeats = 10000
-rval = np.zeros(repeats)
+rval = np.zeros((repeats,10))
+a = {99,199,299,399,499,599,699,799,899,999}
 for l in range(repeats):
     random.seed(4397 + l)
+    print(l)
     y = 0
     for i in range(N):
-        if random.randrange(1, 1000) > 500:
+        if random.random() > 0.5:
             y = y + 1
         else:
             y = y - 1
-    rval[l] = y ** 2
+        if i in a: #https://stackoverflow.com/a/58844693 change in to a faster method
+            k=round(0.01*i-0.99)
+            rval[l,k] = y ** 2
 fig = plt.figure()
 ax = plt.axes()
-irange = np.arange(1, 1000, dtype=int)
-
-
-def f(x):
-    return np.average(rval[0:int(x)])
-
-
-f2 = np.vectorize(f)
-plt.plot(irange, f2(irange))
+for i in range(10):
+    plt.plot(100*i+99,np.average(rval[:,i]),'o')
 ax.set_ylabel('$<R^{2}>$')
 ax.set_title('$<R^{2}>$ - N in 1D')
 ax.set_xlabel('N')
