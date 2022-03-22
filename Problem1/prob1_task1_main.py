@@ -2,6 +2,7 @@ import random
 import pathlib  # needed to create folder
 import matplotlib.pyplot as plt  # needed for graphs
 import numpy as np
+from tqdm import trange # progress bar
 
 #####################################
 # Function to save images to folder #
@@ -23,7 +24,7 @@ ar=np.random.rand(n) # array with random numbers
 vals=np.fromfunction(lambda j,i: 10*10**i,(1,numtests))
 means=np.zeros(numtests)
 
-for i in range(numtests):
+for i in trange(numtests):
     means[i]=np.mean(ar[0:int(vals[0][i])])
 fig = plt.figure()
 ax=plt.axes()
@@ -34,4 +35,3 @@ ax.set_xlabel('N')
 ax.set_xscale('log')
 savim('images','problem1_task1_randplot')
 print('Program finished running!')
-

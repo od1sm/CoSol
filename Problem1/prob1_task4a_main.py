@@ -3,6 +3,8 @@ import pathlib  # needed to create folder
 import matplotlib.pyplot as plt  # needed for graphs
 import numpy as np
 from scipy.stats import norm
+from tqdm import trange  # progress bar
+
 #####################################
 # Function to save images to folder #
 #####################################
@@ -22,7 +24,7 @@ N = 1000  # random walk steps
 repeats = 100000
 rval1 = np.zeros(repeats)
 print('Calculating for N = 1000:')
-for l in range(repeats):
+for l in trange(repeats):
     random.seed(4397 + l)
     y = 0
     for i in range(N):
@@ -56,7 +58,7 @@ savim('images', 'problem1_task4a_plot')
 N = 2000  # random walk steps
 rval2 = np.zeros(repeats)
 print('Calculating for N = 2000:')
-for l in range(repeats):
+for l in trange(repeats):
     random.seed(4397 + l)
     y = 0
     for i in range(N):
@@ -73,7 +75,7 @@ ax1 = plt.axes()
 # ax.set_title('Histogram of R')
 # ax.set_xlabel('R')
 # Fit a normal distribution to the data:
-mu1, std1 = norm.fit(rval1)
+mu1, std1 = norm.fit(rval2)
 
 # Plot the histogram.
 plt.hist(rval2, bins=15, density=True, alpha=0.6, color='r')
@@ -83,7 +85,7 @@ xmin1, xmax1 = plt.xlim()
 x1 = np.linspace(xmin1, xmax1, 100)
 p1 = norm.pdf(x1, mu1, std1)
 plt.plot(x1, p1, 'k', linewidth=2)
-title = "Fit results: mu = %.2f,  std = %.2f, n=2000" % (mu1, std1)
+title = "Fit results: mu = %.2f,  std = %.2f, n=1000" % (mu1, std1)
 plt.title(title)
 savim('images', 'problem1_task4b_plot')
 

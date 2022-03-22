@@ -2,6 +2,7 @@ import random
 import numpy as np
 import pathlib  # needed to create folder
 import matplotlib.pyplot as plt  # needed for graphs
+from tqdm import trange # progress bar
 
 #####################################
 # Function to save images to folder #
@@ -22,7 +23,7 @@ N = 1000  # random walk steps
 repeats = 10000
 rval = np.zeros((repeats, 10))
 a = {99, 199, 299, 399, 499, 599, 699, 799, 899, 999}
-for l in range(repeats):
+for l in trange(repeats):
     random.seed(4397 + l)
     y = 0
     x = 0
@@ -47,5 +48,4 @@ ax.set_ylabel('$<R^{2}>$')
 ax.set_title('$<R^{2}>$ - N in 2D')
 ax.set_xlabel('N')
 savim('images', 'problem1_task3b_plot')
-print('Program finished running!')
 print('Program finished running!')

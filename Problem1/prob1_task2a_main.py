@@ -1,10 +1,11 @@
 import random
 import numpy as np
+from tqdm import trange
 
 N = 1000  # random walk steps
 repeats = 10000
 rval = np.zeros(repeats)
-for l in range(repeats):
+for l in trange(repeats):
     random.seed(4397 + l)
     y = 0
     for i in range(N):
