@@ -13,5 +13,5 @@ for l in trange(repeats):
             y = y + 1
         else:
             y = y - 1
-    rval[l] = y ** 2
+    rval[l] = y**2
 print(np.average(rval))
