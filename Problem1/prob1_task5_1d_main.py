@@ -63,7 +63,7 @@ steps_checking = set(range(99, 1000, 100))  # Steps where we determine our value
 for l in trange(repeats):
     grid = np.zeros((2000), dtype=np.bool8)  # 2000 bytes
     # grid1 = np.zeros((2000, 1), dtype=np.int0)  # 16000 bytes
-    random.seed(4387 + l)
+    random.seed(4397 + l)
     y = start_point
     for i in range(total_random_walk_steps):
         if random.random() > 0.5:
@@ -112,5 +112,5 @@ while i < len(labels):
     else:
         i += 1
 plt.legend(handles, labels, loc="best", fancybox=True, framealpha=1, borderpad=1)
-savim("images", "problem1_task5_1D_plot")
+savim("images", "prob1_task5_1D_plot")
 print("Program finished running!")

@@ -60,7 +60,8 @@ for l in trange(repeats):
 
 # Plot the PDF.
 ProbabilityDensityFunctionPlot(rval1, "g", 1000)
-savim("images", "problem1_task4a_plot")
+plt.tight_layout()
+savim("images", "prob1_task4a_plot")
 
 N = 2000  # random walk steps
 rval2 = np.zeros(repeats)
@@ -77,7 +78,8 @@ for l in trange(repeats):
 
 # Plot the PDF.
 ProbabilityDensityFunctionPlot(rval2, "r", 2000)
-savim("images", "problem1_task4b_plot")
+plt.tight_layout()
+savim("images", "prob1_task4b_plot")
 
 # Plot two histograms in one plot
 fig = plt.figure()
@@ -102,7 +104,8 @@ plt.xlabel("Final position", size=13)
 plt.ylabel("Frequency", size=13)
 plt.title("Histograms for the two values of N")
 plt.legend(loc="best", fancybox=True, framealpha=1, borderpad=1)
-savim("images", "problem1_task4c_plot")
+plt.tight_layout()
+savim("images", "prob1_task4c_plot")
 
 # Plot the two PDFs
 fig = plt.figure()
@@ -130,5 +133,6 @@ plt.plot(
 )
 plt.title("PDFs for the two values of N")
 plt.legend()
-savim("images", "problem1_task4d_plot")
+plt.tight_layout()
+savim("images", "prob1_task4d_plot")
 print("Program finished running!")

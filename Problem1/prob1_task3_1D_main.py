@@ -4,6 +4,7 @@ import pathlib  # needed to create folder
 import matplotlib.pyplot as plt  # needed for graphs
 from tqdm import trange  # progress bar
 from cycler import cycler
+from scipy.optimize import curve_fit
 
 plt.rcParams["axes.prop_cycle"] = cycler(
     color=[
@@ -60,5 +61,25 @@ for i in range(10):
 ax.set_ylabel("$<R^{2}>$")
 ax.set_title("$<R^{2}>$ - N in 1D")
 ax.set_xlabel("N")
-savim("images", "problem1_task3_1D_plot")
-print("Program finished running!")
+iterable = (np.average(rval[:, i]) for i in range(0, 10, 1))
+array = np.fromiter(iterable, float)
+xaxis_for_array = np.arange(99, 1000, 100)
+
+
+def f(x, a):
+    return a * x
+
+
+iterable = (np.average(rval[:, i]) for i in range(0, 10, 1))
+array = np.fromiter(iterable, float)
+xaxis_for_array = np.arange(99, 1000, 100)
+# parameters and parameter covariances
+popt, pcov = curve_fit(f, xaxis_for_array, array)
+plt.plot(xaxis_for_array, f(xaxis_for_array, *popt), alpha=0.4)
+plt.text(200, 800, "y = " + "{:.4f}".format(popt[0]) + "x")
+savim("images", "prob1_task3_2D_plot")
+# a, b = np.polyfit(xaxis_for_array, array, 1)
+# plt.plot(xaxis_for_array, a*xaxis_for_array+b,alpha=0.5,zorder=1)
+# plt.text(200, 800, 'y = ' + '{:.2f}'.format(b) + ' + {:.2f}'.format(a) + 'x')
+# savim("images", "prob1_task3_1D_plot")
+# print("Program finished running!")

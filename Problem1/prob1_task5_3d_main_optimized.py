@@ -61,7 +61,7 @@ start_point = 999  # for grid. Since final walk position is inside [-1000,1000]
 steps_checking = set(range(99, 1000, 100))  # Steps where we determine our values
 
 for l in trange(repeats):
-    random.seed(4387 + l)
+    random.seed(4397 + l)
     y = start_point
     x = start_point
     z = start_point
@@ -130,5 +130,5 @@ while i < len(labels):
     else:
         i += 1
 plt.legend(handles, labels, loc="best", fancybox=True, framealpha=1, borderpad=1)
-savim("images", "problem1_task5_3D_plot_optimized")
+savim("images", "prob1_task5_3D_plot_optimized")
 print("Program finished running!")
