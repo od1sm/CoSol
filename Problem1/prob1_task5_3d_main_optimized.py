@@ -36,7 +36,7 @@ plt.rcParams["axes.prop_cycle"] = cycler(
 def check_if_visited(
     x_val, y_val, z_val
 ):  # function that checks if a grid position has been visited already
-    if (x, y, z) not in grid_positions:
+    if (x_val, y_val, z_val) not in grid_positions:
         grid_positions.add((x_val, y_val, z_val))
 
 
